@@ -1,3 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">BelajarAndroidIntermediate</string>
+    <string name="app_name">StoryApp</string>
+    <string name="text_view_email">Email</string>
+    <string name="txt_password">Password</string>
+    <string name="iv_pokemon_desc">Ini adalah logo pokemon</string>
+    <string name="btn_text_login">Login</string>
+    <string name="text_welcome">Selamat datang di Pokemon Story!</string>
+    <string name="txt_welcome_desc">Mau tau keseruan di dunia Pokemon, Evolusi Mega, Z Move, Pokemon Galar? Yuk di Pokemon Story Aja!</string>
+    <string name="btn_text_register">Register</string>
+    <string name="text_register_info">Lengkapi data dirimu di bawah ini ya! Bersiap untuk menjadi trainer yang hebat!</string>
+    <string name="text_nama">Nama</string>
+    <string name="btn_text_signup">Sign Up</string>
+    <string name="text_pokemon">Pokemon</string>
+    <string name="fab_add_story_desc">Ini adalah tombol untuk menambahkan cerita baru</string>
+    <string name="btn_text_gallery">Gallery</string>
+    <string name="btn_text_camera">Camera</string>
+    <string name="edit_text_desc">Description</string>
+    <string name="btn_text_upload">Upload</string>
+    <string name="iv_splashcreen_desc">Ini adalah gambar pokemon untuk splashscreen</string>
+    <string name="txt_pokemon_stories">Pokemon Stories</string>
+    <string name="text_logout">Logout</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nested_scroll_view_desc">Ini adalah nested scroll view</string>
+    <string name="text_lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui of ficia deserunt mollit anim id est laborum.</string>
+    <string name="img_story_desc">Ini adalah gambar dari story</string>
 </resources>
