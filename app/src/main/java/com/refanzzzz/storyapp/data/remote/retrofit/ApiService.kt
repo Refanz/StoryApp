@@ -1,7 +1,6 @@
 package com.refanzzzz.storyapp.data.remote.retrofit
 
 import com.refanzzzz.storyapp.data.remote.response.AddStoryResponse
-import com.refanzzzz.storyapp.data.remote.response.DetailStoryResponse
 import com.refanzzzz.storyapp.data.remote.response.LoginResponse
 import com.refanzzzz.storyapp.data.remote.response.RegisterResponse
 import com.refanzzzz.storyapp.data.remote.response.StoryResponse
@@ -13,7 +12,7 @@ import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
-import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
     @FormUrlEncoded
@@ -36,8 +35,19 @@ interface ApiService {
     suspend fun addNewStory(
         @Part photo: MultipartBody.Part,
         @Part("description") description: RequestBody
-    ) : AddStoryResponse
+    ): AddStoryResponse
 
     @GET("stories")
-    suspend fun getAllStory() : StoryResponse
+    suspend fun getAllStory(): StoryResponse
+
+    @GET("stories")
+    suspend fun getStories(
+        @Query("page") page: Int = 1,
+        @Query("size") size: Int = 20
+    ): StoryResponse
+
+    @GET("stories")
+    suspend fun getStoriesWithLocation(
+        @Query("locations") location: Int = 1,
+    ): StoryResponse
 }

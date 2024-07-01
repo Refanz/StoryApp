@@ -6,26 +6,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityOptionsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.refanzzzz.storyapp.data.Result
-import com.refanzzzz.storyapp.data.model.Story
 import com.refanzzzz.storyapp.data.remote.response.ListStoryItem
 import com.refanzzzz.storyapp.databinding.FragmentStoryBinding
+import com.refanzzzz.storyapp.model.Story
 import com.refanzzzz.storyapp.ui.activity.DetailStoryActivity
 import com.refanzzzz.storyapp.ui.adapter.ListStoryAdapter
+import com.refanzzzz.storyapp.ui.adapter.LoadingStateAdapter
 import com.refanzzzz.storyapp.ui.viewmodel.StoryViewModel
 import com.refanzzzz.storyapp.ui.viewmodel.ViewModelFactory
 
 class StoryFragment : Fragment() {
-
-    companion object {
-        const val STORY_KEY = "story_key"
-    }
 
     private var _binding: FragmentStoryBinding? = null
     private val binding get() = _binding
@@ -48,30 +43,7 @@ class StoryFragment : Fragment() {
 
         initRecyclerView()
 
-        storyViewModel.getAllStory().observe(viewLifecycleOwner) { result ->
-            if (result != null) {
-                when (result) {
-                    is Result.Loading -> {
-                        showLoading(true)
-                    }
-
-                    is Result.Success -> {
-                        @Suppress("UNCHECKED_CAST")
-                        setRecyclerViewData(result.data.listStory as List<ListStoryItem>)
-                        showLoading(false)
-                    }
-
-                    is Result.Error -> {
-                        Toast.makeText(
-                            requireContext(),
-                            "Data tidak ditemukan!",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        showLoading(false)
-                    }
-                }
-            }
-        }
+        setRecyclerViewData()
     }
 
     private fun initRecyclerView() {
@@ -80,9 +52,19 @@ class StoryFragment : Fragment() {
     }
 
 
-    private fun setRecyclerViewData(listStory: List<ListStoryItem>) {
-        val adapter = ListStoryAdapter(listStory as ArrayList<ListStoryItem>)
+    private fun setRecyclerViewData() {
+        val adapter = ListStoryAdapter()
+        binding?.rvStory?.adapter = adapter.withLoadStateFooter(
+            footer = LoadingStateAdapter {
+                adapter.retry()
+            }
+        )
+
         binding?.rvStory?.adapter = adapter
+
+        storyViewModel.story.observe(viewLifecycleOwner) {
+            adapter.submitData(viewLifecycleOwner.lifecycle, it)
+        }
 
         adapter.setOnItemClickCallback(object : ListStoryAdapter.OnItemClickCallback {
             override fun onItemClicked(data: ListStoryItem, itemView: View) {
@@ -90,13 +72,13 @@ class StoryFragment : Fragment() {
 
                 val intent = Intent(requireActivity(), DetailStoryActivity::class.java)
                 intent.putExtra(STORY_KEY, story)
-                startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(itemView.context as Activity).toBundle())
+                startActivity(
+                    intent,
+                    ActivityOptionsCompat.makeSceneTransitionAnimation(itemView.context as Activity)
+                        .toBundle()
+                )
             }
         })
-    }
-
-    private fun showLoading(isLoading: Boolean) {
-        binding?.progressBarListStory?.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     private fun obtainViewModel(activity: AppCompatActivity): StoryViewModel {
@@ -107,5 +89,9 @@ class StoryFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        const val STORY_KEY = "story_key"
     }
 }

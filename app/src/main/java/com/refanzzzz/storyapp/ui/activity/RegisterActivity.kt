@@ -1,10 +1,11 @@
 package com.refanzzzz.storyapp.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.refanzzzz.storyapp.R
 import com.refanzzzz.storyapp.data.Result
 import com.refanzzzz.storyapp.databinding.ActivityRegisterBinding
 import com.refanzzzz.storyapp.ui.viewmodel.UserViewModel
@@ -53,7 +54,7 @@ class RegisterActivity : AppCompatActivity() {
                         }
 
                         is Result.Success -> {
-                            showToast("Anda berhasil melakukan registrasi!")
+                            showToast(resources.getString(R.string.register_success))
                             showLoading(false)
                         }
 
@@ -72,7 +73,7 @@ class RegisterActivity : AppCompatActivity() {
         Toast.makeText(this@RegisterActivity, message, Toast.LENGTH_SHORT).show()
     }
 
-    private fun obtainViewModel(activity: AppCompatActivity) : UserViewModel {
+    private fun obtainViewModel(activity: AppCompatActivity): UserViewModel {
         val factory = ViewModelFactory.getInstance(activity.application)
         return ViewModelProvider(activity, factory)[UserViewModel::class.java]
     }

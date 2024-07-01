@@ -35,6 +35,12 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
 
+                R.id.menu2 -> {
+                    val intent = Intent(this@MainActivity, MapsActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+
                 else -> false
             }
         }

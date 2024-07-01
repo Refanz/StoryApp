@@ -24,10 +24,6 @@ import com.refanzzzz.storyapp.util.Utils.uriToFile
 
 class AddStoryActivity : AppCompatActivity(), OnClickListener {
 
-    companion object {
-        private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
-    }
-
     private var _activityAddStoryBinding: ActivityAddStoryBinding? = null
     private val binding get() = _activityAddStoryBinding
 
@@ -118,7 +114,7 @@ class AddStoryActivity : AppCompatActivity(), OnClickListener {
 
     private fun openCamera() {
         currentImageUri = getImageUri(this)
-        launcherIntentCamera.launch(currentImageUri)
+        launcherIntentCamera.launch(currentImageUri!!)
     }
 
     private val launcherIntentCamera = registerForActivityResult(
@@ -178,5 +174,9 @@ class AddStoryActivity : AppCompatActivity(), OnClickListener {
         super.onDestroy()
 
         _activityAddStoryBinding = null
+    }
+
+    companion object {
+        private const val REQUIRED_PERMISSION = Manifest.permission.CAMERA
     }
 }

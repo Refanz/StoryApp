@@ -24,7 +24,6 @@
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
         android:text="@string/text_register_info"
-        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/iv_satoshi" />
@@ -37,7 +36,6 @@
         android:layout_marginTop="15dp"
         android:labelFor="@id/edit_text_nama"
         android:text="@string/text_nama"
-        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_info_register" />
@@ -70,7 +68,6 @@
         android:layout_marginTop="15dp"
         android:labelFor="@id/edit_text_email"
         android:text="@string/text_view_email"
-        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/input_layout_nama" />
@@ -103,7 +100,6 @@
         android:layout_marginTop="15dp"
         android:labelFor="@id/edit_text_password"
         android:text="@string/txt_password"
-        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/input_layout_email" />
@@ -138,7 +134,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/bg_button"
         android:text="@string/btn_text_signup"
-        android:textColor="@color/white"
+        android:textColor="@color/md_theme_onPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/input_layout_password" />
@@ -147,7 +143,6 @@
         android:id="@+id/progress_bar_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:indeterminateTint="@color/orange_500"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

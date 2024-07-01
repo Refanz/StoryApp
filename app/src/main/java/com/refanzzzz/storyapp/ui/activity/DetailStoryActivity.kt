@@ -4,7 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.refanzzzz.storyapp.data.model.Story
+import com.refanzzzz.storyapp.model.Story
 import com.refanzzzz.storyapp.databinding.ActivityDetailStoryBinding
 import com.refanzzzz.storyapp.ui.fragment.StoryFragment
 

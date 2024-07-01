@@ -1,4 +1,4 @@
-package com.refanzzzz.storyapp.data.di
+package com.refanzzzz.storyapp.di
 
 import android.content.Context
 import com.refanzzzz.storyapp.data.local.LoginPreferences

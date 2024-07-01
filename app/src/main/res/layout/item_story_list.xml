@@ -10,7 +10,6 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
         app:cardCornerRadius="10dp">
 
         <LinearLayout
@@ -31,9 +30,8 @@
                 android:id="@+id/tv_story_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/text_pokemon"
                 android:layout_marginTop="10dp"
-                android:textColor="@color/black"
+                android:text="@string/text_pokemon"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -43,11 +41,8 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:text="Pokémon adalah salah satu waralaba media yang dimiliki oleh perusahaan permainan video Nintendo dan diciptakan oleh Satoshi Tajiri pada 1995. Pada mulanya, Pokémon adalah seri permainan video yang identik dengan konsol Game Boy. " />
-
-
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>

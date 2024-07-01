@@ -6,7 +6,7 @@ import androidx.lifecycle.liveData
 import com.google.gson.Gson
 import com.refanzzzz.storyapp.data.Result
 import com.refanzzzz.storyapp.data.local.LoginPreferences
-import com.refanzzzz.storyapp.data.model.UserSession
+import com.refanzzzz.storyapp.model.UserSession
 import com.refanzzzz.storyapp.data.remote.response.LoginResponse
 import com.refanzzzz.storyapp.data.remote.response.RegisterResponse
 import com.refanzzzz.storyapp.data.remote.retrofit.ApiService
@@ -16,25 +16,6 @@ class UserRepository private constructor(
     private val apiService: ApiService,
     private val loginPreferences: LoginPreferences
 ) {
-
-    companion object {
-        @Volatile
-        private var INSTANCE: UserRepository? = null
-
-        fun getInstance(
-            apiService: ApiService,
-            loginPreferences: LoginPreferences
-        ): UserRepository {
-            if (INSTANCE == null) {
-                synchronized(UserRepository::class.java) {
-                    INSTANCE = UserRepository(apiService, loginPreferences)
-                }
-            }
-
-            return INSTANCE as UserRepository
-        }
-    }
-
     fun register(name: String, email: String, password: String) = liveData {
         emit(Result.Loading)
 
@@ -77,5 +58,23 @@ class UserRepository private constructor(
 
     suspend fun removeUserLogin() {
         loginPreferences.removeUserSession()
+    }
+
+    companion object {
+        @Volatile
+        private var INSTANCE: UserRepository? = null
+
+        fun getInstance(
+            apiService: ApiService,
+            loginPreferences: LoginPreferences
+        ): UserRepository {
+            if (INSTANCE == null) {
+                synchronized(UserRepository::class.java) {
+                    INSTANCE = UserRepository(apiService, loginPreferences)
+                }
+            }
+
+            return INSTANCE as UserRepository
+        }
     }
 }

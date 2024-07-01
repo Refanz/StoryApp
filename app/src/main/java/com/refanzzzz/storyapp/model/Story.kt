@@ -1,4 +1,4 @@
-package com.refanzzzz.storyapp.data.model
+package com.refanzzzz.storyapp.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
