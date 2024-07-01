@@ -1,6 +1,5 @@
 package com.refanzzzz.storyapp.data.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import androidx.paging.Pager
@@ -53,7 +52,6 @@ class StoryRepository private constructor(
             emit(Result.Success(successResponse))
 
         } catch (e: HttpException) {
-            Log.e(TAG, "getStories: ${e.message()}")
             emit(Result.Error(e.message()))
         }
     }
@@ -65,7 +63,6 @@ class StoryRepository private constructor(
             val successResponse = apiService.getStoriesWithLocation()
             emit(Result.Success(successResponse))
         } catch (e: HttpException) {
-            Log.e(TAG, e.message())
             emit(Result.Error(e.message()))
         }
     }

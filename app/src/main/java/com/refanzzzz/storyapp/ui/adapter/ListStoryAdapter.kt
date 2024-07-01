@@ -1,6 +1,5 @@
 package com.refanzzzz.storyapp.ui.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,10 +30,6 @@ class ListStoryAdapter :
             holder.itemView.setOnClickListener {
                 onItemClickCallback.onItemClicked(story, holder.itemView)
             }
-
-            Log.d("MyAdapter", "Item at position $position:$story")
-        } else {
-            Log.d("MyAdapter", "Item at position $position is null")
         }
     }
 
@@ -57,7 +52,7 @@ class ListStoryAdapter :
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListStoryItem>() {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListStoryItem>() {
             override fun areItemsTheSame(oldItem: ListStoryItem, newItem: ListStoryItem): Boolean {
                 return oldItem == newItem
             }

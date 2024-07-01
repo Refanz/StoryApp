@@ -6,7 +6,6 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.refanzzzz.storyapp.data.remote.response.ListStoryItem
-import com.refanzzzz.storyapp.data.remote.response.StoryResponse
 import com.refanzzzz.storyapp.data.repository.StoryRepository
 import java.io.File
 
